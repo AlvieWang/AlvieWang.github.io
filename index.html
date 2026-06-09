@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alvie Wang | MPhil @ CUHK(SZ) · Multimodal AI & Embodied Intelligence</title>
+<meta name="description" content="Personal homepage of 王洪榕 (Alvie Wang) — MPhil student at CUHK(Shenzhen), researching VLA models, Embodied AI, and Preference Alignment.">
+<meta name="keywords" content="Alvie Wang, CUHK, Embodied AI, VLA, Multimodal LLM, DPO, SVLL, DeepSeek-OCR, BuildingView">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2235;
+  --bg-card-hover: #1f2a42;
+  --text-primary: #e8eaed;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #a855f7;
+  --accent-green: #10b981;
+  --accent-orange: #f59e0b;
+  --accent-pink: #ec4899;
+  --border-color: rgba(255,255,255,0.08);
+  --glow-cyan: 0 0 20px rgba(0,212,255,0.15);
+  --glow-purple: 0 0 20px rgba(168,85,247,0.15);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-w: 1100px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 3px; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.1); }
+  50% { box-shadow: 0 0 40px rgba(0,212,255,0.25); }
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,14,23,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 2rem;
+  transition: all 0.3s;
+}
+nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo {
+  font-size: 1.2rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.3s; position: relative;
+  padding: 0.25rem 0;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background: radial-gradient(circle at 30% 40%, rgba(0,212,255,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(168,85,247,0.06) 0%, transparent 50%);
+  animation: float 15s ease-in-out infinite;
+}
+.hero-content {
+  text-align: center; position: relative; z-index: 1; max-width: 800px;
+}
+.hero-avatar {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  padding: 4px; margin: 0 auto 2rem;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+.hero-avatar-inner {
+  width: 100%; height: 100%; border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+}
+.hero h1 {
+  font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+.hero-subtitle {
+  font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.typewriter-container {
+  display: inline-block; margin-bottom: 2rem;
+}
+.typewriter {
+  display: inline; font-size: 1.1rem; color: var(--accent-cyan);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  border-right: 3px solid var(--accent-cyan);
+  white-space: nowrap; overflow: hidden;
+  animation: typewriter 3s steps(40) 0.5s forwards, blink 0.7s step-end infinite;
+  max-width: fit-content;
+}
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem; border-radius: 50px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.3s; cursor: pointer; border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+  color: #fff; box-shadow: var(--glow-cyan);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(0,212,255,0.35); }
+.btn-outline {
+  background: transparent; color: var(--text-primary);
+  border: 1.5px solid var(--border-color);
+}
+.btn-outline:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); transform: translateY(-2px); }
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  background: var(--bg-secondary); border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color); padding: 2.5rem 2rem;
+}
+.stats-grid {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem; text-align: center;
+}
+.stat-item .stat-number {
+  font-size: 2.5rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-item .stat-label { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+/* ===== SECTIONS COMMON ===== */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section-title {
+  font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-title .emoji { font-size: 1.8rem; }
+.section-subtitle { color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.05rem; }
+.section-divider {
+  width: 60px; height: 4px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 2px; margin-bottom: 3rem;
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+}
+.about-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all 0.3s;
+}
+.about-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); box-shadow: var(--glow-cyan); }
+.about-card h3 {
+  color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.about-card ul { list-style: none; }
+.about-card li {
+  padding: 0.35rem 0; color: var(--text-secondary);
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+.about-card li::before { content:'▹'; color: var(--accent-cyan); flex-shrink: 0; margin-top: 2px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.tag {
+  padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.82rem;
+  background: rgba(0,212,255,0.1); color: var(--accent-cyan);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+
+/* ===== RESEARCH INTERESTS ===== */
+.research-tree {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 2.5rem; font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9rem; line-height: 2; overflow-x: auto;
+  box-shadow: var(--glow-purple);
+}
+.research-tree .tree-root { color: var(--accent-cyan); font-weight: 700; }
+.research-tree .tree-branch { color: var(--accent-purple); }
+.research-tree .tree-leaf { color: var(--text-secondary); }
+.research-tree .tree-arrow { color: var(--text-muted); }
+.research-tree .tree-bullet { color: var(--accent-green); }
+
+/* ===== EDUCATION ===== */
+.education-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.edu-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 2rem;
+  border-left: 4px solid var(--accent-cyan);
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.edu-card:nth-child(2) { border-left-color: var(--accent-purple); }
+.edu-card:hover { transform: translateX(5px); box-shadow: var(--glow-cyan); }
+.edu-card .edu-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.edu-card h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+.edu-card .edu-school { color: var(--accent-cyan); font-weight: 600; }
+.edu-card .edu-time { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem; }
+.edu-card .edu-detail { color: var(--text-secondary); font-size: 0.92rem; }
+.edu-card .edu-detail strong { color: var(--text-primary); }
+.edu-courses {
+  margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.course-tag {
+  padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem;
+  background: rgba(168,85,247,0.1); color: var(--accent-purple);
+  border: 1px solid rgba(168,85,247,0.15);
+}
+
+/* ===== EXPERIENCE TIMELINE ===== */
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content:''; position: absolute; left: 7px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+}
+.timeline-item {
+  position: relative; margin-bottom: 2.5rem;
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 1.75rem;
+  transition: all 0.3s;
+}
+.timeline-item:hover { transform: translateX(5px); box-shadow: var(--glow-cyan); }
+.timeline-item::before {
+  content:''; position: absolute; left: -2.25rem; top: 1.75rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent-cyan); border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 10px rgba(0,212,255,0.4);
+}
+.timeline-item:nth-child(2)::before { background: var(--accent-purple); box-shadow: 0 0 10px rgba(168,85,247,0.4); }
+.timeline-item:nth-child(3)::before { background: var(--accent-green); box-shadow: 0 0 10px rgba(16,185,129,0.4); }
+.timeline-item:nth-child(4)::before { background: var(--accent-orange); box-shadow: 0 0 10px rgba(245,158,11,0.4); }
+.tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tl-role { font-size: 1.1rem; font-weight: 700; }
+.tl-org { color: var(--accent-cyan); font-weight: 500; }
+.tl-time { color: var(--text-muted); font-size: 0.88rem; white-space: nowrap; }
+.tl-desc { color: var(--text-secondary); font-size: 0.93rem; }
+.tl-desc ul { list-style: none; margin-top: 0.5rem; }
+.tl-desc li {
+  padding: 0.3rem 0; padding-left: 1.25rem; position: relative;
+}
+.tl-desc li::before {
+  content:'→'; position: absolute; left: 0;
+  color: var(--accent-cyan); font-size: 0.85rem;
+}
+.highlight { color: var(--accent-cyan); font-weight: 600; }
+.highlight-purple { color: var(--accent-purple); font-weight: 600; }
+.highlight-green { color: var(--accent-green); font-weight: 600; }
+
+/* ===== PROJECTS GRID ===== */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.project-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all 0.35s; position: relative; overflow: hidden;
+}
+.project-card::before {
+  content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  opacity: 0; transition: opacity 0.3s;
+}
+.project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+.project-card:hover::before { opacity: 1; }
+.pj-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.pj-icon { font-size: 2rem; }
+.pj-name { font-size: 1.15rem; font-weight: 700; }
+.pj-status {
+  font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px;
+  font-weight: 600; margin-left: auto;
+}
+.status-review { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
+.status-pub { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.pj-venue { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem; }
+.pj-desc { color: var(--text-secondary); font-size: 0.93rem; margin-bottom: 1.25rem; }
+.pj-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pj-tech span {
+  padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.78rem;
+  background: rgba(255,255,255,0.05); color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+.pj-link {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  color: var(--accent-cyan); text-decoration: none; font-size: 0.9rem;
+  font-weight: 500; margin-top: 1rem; transition: gap 0.3s;
+}
+.pj-link:hover { gap: 0.65rem; }
+
+/* ===== PUBLICATIONS TABLE ===== */
+.pub-table-wrapper { overflow-x: auto; }
+.pub-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-card); border-radius: var(--radius);
+  border: 1px solid var(--border-color); overflow: hidden;
+}
+.pub-table thead { background: rgba(0,212,255,0.08); }
+.pub-table th {
+  padding: 1rem 1.25rem; text-align: left; font-size: 0.88rem;
+  color: var(--accent-cyan); font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; border-bottom: 1px solid var(--border-color);
+}
+.pub-table td {
+  padding: 1rem 1.25rem; font-size: 0.93rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+.pub-table tr:last-child td { border-bottom: none; }
+.pub-table tr:hover td { background: rgba(255,255,255,0.02); }
+.pub-title { color: var(--text-primary); font-weight: 600; }
+.pub-badge {
+  display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px;
+  font-size: 0.78rem; font-weight: 600;
+}
+.badge-review { background: rgba(245,158,11,0.12); color: var(--accent-orange); }
+.badge-pub { background: rgba(16,185,129,0.12); color: var(--accent-green); }
+.pub-link { color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
+.pub-link:hover { text-decoration: underline; }
+
+/* ===== SKILLS ===== */
+.skills-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.skill-group {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 2rem;
+}
+.skill-group h3 { color: var(--accent-cyan); margin-bottom: 1.5rem; font-size: 1.05rem; }
+.skill-item { margin-bottom: 1.25rem; }
+.skill-item:last-child { margin-bottom: 0; }
+.skill-name {
+  display: flex; justify-content: space-between; margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+.skill-name span:first-child { color: var(--text-primary); }
+.skill-name span:last-child { color: var(--text-muted); font-size: 0.82rem; }
+.skill-bar {
+  height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  width: 0; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skill-tags-area { margin-top: 2rem; }
+.skill-tags-label { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; }
+.skill-tags-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skt {
+  padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.84rem;
+  background: var(--bg-secondary); color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s; cursor: default;
+}
+.skt:hover {
+  border-color: var(--accent-cyan); color: var(--accent-cyan);
+  transform: translateY(-2px); box-shadow: var(--glow-cyan);
+}
+.skt-cyan:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+.skt-purple:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
+.skt-green:hover { border-color: var(--accent-green); color: var(--accent-green); }
+.skt-orange:hover { border-color: var(--accent-orange); color: var(--accent-orange); }
+
+/* ===== HONORS ===== */
+.honors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.honor-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius); padding: 1.5rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: all 0.3s;
+}
+.honor-card:hover { transform: translateY(-3px); box-shadow: var(--glow-purple); }
+.honor-icon { font-size: 1.8rem; flex-shrink: 0; }
+.honor-info {}
+.honor-title { font-weight: 600; font-size: 0.95rem; }
+.honor-meta { color: var(--text-muted); font-size: 0.83rem; margin-top: 0.2rem; }
+
+/* ===== CURRENTLY WORKING ===== */
+.working-list { display: flex; flex-direction: column; gap: 1rem; }
+.working-item {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm); padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: all 0.3s;
+}
+.working-item:hover { border-color: var(--accent-cyan); background: var(--bg-card-hover); }
+.wi-emoji { font-size: 1.5rem; }
+.wi-text { flex: 1; }
+.wi-title { font-weight: 600; font-size: 0.95rem; }
+.wi-desc { color: var(--text-muted); font-size: 0.85rem; }
+.wi-status { font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 10px; background: rgba(0,212,255,0.1); color: var(--accent-cyan); }
+
+/* ===== CONTACT / CTA ===== */
+.cta-section {
+  text-align: center; padding: 5rem 2rem;
+  background: linear-gradient(135deg, rgba(0,212,255,0.03), rgba(168,85,247,0.03));
+  border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+}
+.cta-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+.cta-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; max-width: 550px; margin-left: auto; margin-right: auto; }
+.cta-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.75rem; border-radius: 50px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.3s;
+}
+.cta-email {
+  background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+  color: #fff;
+}
+.cta-email:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+.cta-github {
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.cta-github:hover { border-color: var(--text-primary); transform: translateY(-2px); }
+.cta-scholar {
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.cta-scholar:hover { border-color: #4285F4; color: #4285F4; transform: translateY(-2px); }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 2.5rem 2rem;
+  color: var(--text-muted); font-size: 0.85rem;
+  border-top: 1px solid var(--border-color);
+}
+footer a { color: var(--accent-cyan); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .nav-links { display: none; }
+  .about-grid, .education-grid, .skills-section { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .tl-header { flex-direction: column; }
+  section { padding: 3rem 1.25rem; }
+  .section-title { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">Alvie Wang</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-avatar">
+      <div class="hero-avatar-inner">🤖</div>
+    </div>
+    <h1>Alvie Wang</h1>
+    <p class="hero-subtitle">王洪榕 (Hongrong Wang)</p>
+    <p class="hero-subtitle">MPhil Student @ <strong style="color:var(--accent-cyan)">CUHK(Shenzhen)</strong> · AI Institute</p>
+    <div class="typewriter-container">
+      <span class="typewriter" id="typewriter"></span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">🧪 View Projects</a>
+      <a href="#contact" class="btn btn-outline">📬 Contact Me</a>
+      <a href="https://github.com/AlvieWang" target="_blank" class="btn btn-outline">⭐ GitHub Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="4">0</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="6">0</div>
+      <div class="stat-label">Software Copyrights</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="78.35">0</div>
+      <div class="stat-label">SVLL Success Rate (%)</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="3">0</div>
+      <div class="stat-label">Core Research Projects</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">👤</span> About Me</h2>
+    <p class="section-subtitle">A cat who codes, dreams, and occasionally does math.</p>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h3>🎓 Identity</h3>
+        <ul>
+          <li><strong>Name:</strong> 王洪榕 (Hongrong Wang / Alvie Wang)</li>
+          <li><strong>Role:</strong> MPhil Student in Computer Science</li>
+          <li><strong>Institution:</strong> CUHK(Shenzhen) — AI Institute</li>
+          <li><strong>Advisor:</strong> <a href="https://sai.cuhk.edu.cn/teacher/106" style="color:var(--accent-cyan)" target="_blank">Prof. Zhizheng Wu (武执政)</a></li>
+          <li><strong>Location:</strong> 📍 Shenzhen, China</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">VLA Models</span>
+          <span class="tag">Embodied AI</span>
+          <span class="tag">DPO</span>
+          <span class="tag">Sim-to-Real</span>
+        </div>
+      </div>
+      <div class="about-card reveal">
+        <h3>💡 What I Do</h3>
+        <ul>
+          <li>Build <span class="highlight">Vision-Language-Action (VLA)</span> models that help robots understand and interact with the physical world</li>
+          <li>Design <span class="highlight-purple">preference alignment</span> methods (DPO) with bias-aware negative sampling for safer embodied agents</li>
+          <li>Create <span class="highlight-green">evaluation benchmarks</span> with multi-dimensional metrics for embodied task planning</li>
+          <li>Bridge the <span class="highlight">sim-to-real</span> gap between simulation environments and real robot deployment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEARCH ===== -->
+<section id="research" style="background: var(--bg-secondary);">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">🔬</span> Research Interests</h2>
+    <p class="section-subtitle">My research sits at the intersection of multimodal intelligence and embodied agency.</p>
+    <div class="research-tree reveal">
+<pre style="margin:0;background:none;border:none;padding:0;color:inherit;">
+<span class="tree-root">Multimodal Large Language Models ──► Vision-Language-Action (VLA)</span>
+<span class="tree-arrow">        │</span>
+<span class="tree-arrow">        ├── </span><span class="tree-branch">Embodied AI & Robot Task Planning</span>
+<span class="tree-arrow">        │   └── </span><span class="tree-leaf">AI2-THOR + 6-DoF Manipulation Simulation</span>
+<span class="tree-arrow">        │</span>
+<span class="tree-arrow">        ├── </span><span class="tree-branch">Preference Alignment (DPO / RLHF)</span>
+<span class="tree-arrow">        │   └── </span><span class="tree-leaf">Bias-aware Negative Sample Construction &lt;1000 samples</span>
+<span class="tree-arrow">        │</span>
+<span class="tree-arrow">        └── </span><span class="tree-branch">Sim-to-Real Transfer Learning</span>
+<span class="tree-arrow">            └── </span><span class="tree-leaf">Domain Randomization + Policy Adaptation</span>
+</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">📚</span> Education</h2>
+    <p class="section-subtitle">From Guangdong University of Technology to CUHK(Shenzhen).</p>
+    <div class="education-grid">
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <h3>M.Phil in Computer Science</h3>
+        <div class="edu-school">CUHK(Shenzhen) — AI Institute</div>
+        <div class="edu-time">2025.09 – Present (Expected 2027)</div>
+        <div class="edu-detail">
+          <strong>Advisor:</strong> Prof. Zhizheng Wu (武执政)<br>
+          <strong>Focus:</strong> Multimodal LLMs for Embodied Intelligence<br>
+          <strong>Thesis:</strong> Staged Vision-Language Learning for Physically-Grounded Embodied Task Planning
+        </div>
+        <div class="edu-courses">
+          <span class="course-tag">CEC5000 Advanced AI</span>
+          <span class="course-tag">Deep Learning</span>
+          <span class="course-tag">ML Theory</span>
+          <span class="course-tag">VLA Models</span>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-icon">🏫</div>
+        <h3>B.E. in Information Management & IS</h3>
+        <div class="edu-school">Guangdong Univ. of Technology — School of Management</div>
+        <div class="edu-time">2021.09 – 2025.06</div>
+        <div class="edu-detail">
+          <strong>GPA:</strong> Top tier · <strong>Research Advisor:</strong> Prof. Chen Lei (陈磊教授)<br>
+          <strong>Capstone:</strong> Constrained optimization model for vegetable pricing → Published at CIS 2023
+        </div>
+        <div class="edu-courses">
+          <span class="course-tag">Data Structures</span>
+          <span class="course-tag">Database Systems</span>
+          <span class="course-tag">Machine Learning</span>
+          <span class="course-tag">Python</span>
+          <span class="course-tag">Math Modeling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" style="background: var(--bg-secondary);">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">💼</span> Research & Work Experience</h2>
+    <p class="section-subtitle">A journey through academia and industry.</p>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">🤖 Research Assistant — Embodied AI Lab</div>
+            <div class="tl-org">CUHK(Shenzhen)</div>
+          </div>
+          <div class="tl-time">Nov 2025 – Present</div>
+        </div>
+        <div class="tl-desc">
+          Leading the <span class="highlight">SVLL</span> project: A staged VLA framework for physically-grounded embodied task planning (<span class="highlight-purple">ECCV 2026 submission</span>)
+          <ul>
+            <li>Designed a <span class="highlight">three-stage fine-tuning pipeline</span> on Qwen2.5-VL-7B: vision grounding → task planning → action refinement</li>
+            <li>Built <span class="highlight-purple">Bias-DPO</span> preference dataset (&lt;1000 negative samples) with 4-category physical violation annotation scheme</li>
+            <li>Developed <span class="highlight-green">five-dimensional evaluation system</span> (SR/SPL/VAR/LR/CVR) on AI2-THOR benchmark</li>
+            <li>Achieved SR: <strong style="color:var(--accent-cyan)">78.35%</strong> on SVLL benchmark</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">🔍 Open Source Intern — DeepSeek-OCR Project</div>
+            <div class="tl-org">Institute of Automation, CAS (ISAS)</div>
+          </div>
+          <div class="tl-time">Feb – Aug 2025</div>
+        </div>
+        <div class="tl-desc">
+          Contributed to <span class="highlight">DeepSeek-OCR</span> document understanding pipeline based on Huawei MindSpore framework
+          <ul>
+            <li>Produced multi-format SFT training data for document OCR and structured information extraction</li>
+            <li>End-to-end pipeline: layout analysis → text recognition → structured output</li>
+            <li>Gained production-level experience in large-scale data pipelines and model deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">🏙️ Research Collaborator — Urban Vision Computing</div>
+            <div class="tl-org">HKUST(Guangzhou)</div>
+          </div>
+          <div class="tl-time">2024 – 2025</div>
+        </div>
+        <div class="tl-desc">
+          Co-developed <span class="highlight">BuildingView</span>: urban building exterior database using street view imagery and MLLM
+          <ul>
+            <li>Leveraged Multimodal LLM for automated building attribute extraction from panoramic street-level images</li>
+            <li>Paper accepted at <span class="highlight-green">ACM SpatialDI 2025</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">👨‍🎓 Undergraduate Researcher — Evolutionary Computation</div>
+            <div class="tl-org">Guangdong Univ. of Tech</div>
+          </div>
+          <div class="tl-time">2023 – 2025</div>
+        </div>
+        <div class="tl-desc">
+          Advisor: Prof. Chen Lei (陈磊教授)
+          <ul>
+            <li>Published work on LLM-designed evolutionary operators for Multi-objective VRP (<span class="highlight-orange">Under review @ IJCIAP</span>)</li>
+            <li>Built constrained optimization model for vegetable pricing → Published at <strong>CIS 2023</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">🧪</span> Featured Projects</h2>
+    <p class="section-subtitle">My core research projects with technical deep dives.</p>
+    <div class="projects-grid">
+
+      <!-- SVLL -->
+      <div class="project-card reveal">
+        <div class="pj-header">
+          <div class="pj-icon">🧠</div>
+          <div class="pj-name">SVLL</div>
+          <span class="pj-status status-review">⏳ ECCV 2026</span>
+        </div>
+        <div class="pj-venue">Staged VLLM for Embodied Task Planning</div>
+        <div class="pj-desc">
+          A novel staged fine-tuning framework that adapts general-purpose VLMs into effective embodied task planners through progressive skill acquisition. Three-stage curriculum learning reduces catastrophic forgetting while Bias-DPO handles long-tail physical constraint violations.
+        </div>
+        <div class="pj-tech">
+          <span>Qwen2.5-VL-7B</span>
+          <span>AI2-THOR</span>
+          <span>Bias-DPO</span>
+          <span>DPO</span>
+          <span>Python</span>
+          <span>PyTorch</span>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-color)">
+          <table style="width:100%;font-size:0.83rem;">
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Base Model</td><td style="text-align:right;color:var(--text-secondary)">Qwen2.5-VL-7B</td></tr>
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Stage 1: Vision Grounding</td><td style="text-align:right;color:var(--text-secondary)">Object/Spatial Understanding</td></tr>
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Stage 2: Task Planning</td><td style="text-align:right;color:var(--text-secondary)">Goal Decomposition</td></tr>
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Stage 3: Action Refinement</td><td style="text-align:right;color:var(--text-secondary)">Physical Constraint Reasoning</td></tr>
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Dataset</td><td style="text-align:right;color:var(--accent-cyan)">&lt;1000 negative samples</td></tr>
+            <tr><td style="color:var(--text-muted);padding:2px 0;">Success Rate (SR)</td><td style="text-align:right;font-weight:700;color:var(--accent-green)">78.35%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- BuildingView -->
+      <div class="project-card reveal">
+        <div class="pj-header">
+          <div class="pj-icon">🏙️</div>
+          <div class="pj-name">BuildingView</div>
+          <span class="pj-status status-pub">✅ SpatialDI 2025</span>
+        </div>
+        <div class="pj-venue">Urban Building Exterior Database with MLLM</div>
+        <div class="pj-desc">
+          Automated construction of building exterior databases at city scale by leveraging street view imagery and Multimodal Large Language Models. Enables large-scale urban computing applications including energy estimation and 3D reconstruction.
+        </div>
+        <div class="pj-tech">
+          <span>MLLM</span>
+          <span>Street View API</span>
+          <span>Building Extraction</span>
+          <span>Python</span>
+        </div>
+        <a href="https://github.com/Jasper0122/BuildingView" target="_blank" class="pj-link">View Code →</a>
+      </div>
+
+      <!-- DeepSeek-OCR -->
+      <div class="project-card reveal">
+        <div class="pj-header">
+          <div class="pj-icon">🔤</div>
+          <div class="pj-name">DeepSeek-OCR</div>
+          <span class="pj-status status-review">🏛️ Internship</span>
+        </div>
+        <div class="pj-venue">Document Understanding Pipeline (MindSpore)</div>
+        <div class="pj-desc">
+          Production-grade document image processing system supporting multi-format input and structured output. Contributed to SFT data production covering invoices, receipts, forms, and certificates.
+        </div>
+        <div class="pj-tech">
+          <span>MindSpore</span>
+          <span>OCR</span>
+          <span>SFT Data</span>
+          <span>Flask</span>
+          <span>Document AI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications" style="background: var(--bg-secondary);">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">📝</span> Publications</h2>
+    <p class="section-subtitle">Peer-reviewed work and submissions.</p>
+    <div class="pub-table-wrapper reveal">
+      <table class="pub-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Venue</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pub-badge badge-review">⏳ Under Review</span></td>
+            <td class="pub-title"><strong>SVLL</strong>: Staged Vision-Language Learning for Physically-Grounded Embodied Task Planning</td>
+            <td>ECCV 2026</td>
+            <td><a href="https://arxiv.org/" class="pub-link" target="_blank">arXiv →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pub-badge badge-pub">✅ Published</span></td>
+            <td class="pub-title"><strong>BuildingView</strong>: Constructing Urban Building Exteriors Databases with Street View Imagery and MLLM</td>
+            <td>ACM SpatialDI 2025</td>
+            <td><a href="https://github.com/Jasper0122/BuildingView" class="pub-link" target="_blank">Code →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pub-badge badge-review">⏳ Under Review</span></td>
+            <td class="pub-title">Transfer Learning-Based Evolutionary Algorithm with LLM-designed Operators for MO-VRP</td>
+            <td>IJCIAP</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="pub-badge badge-pub">✅ Published</span></td>
+            <td class="pub-title">Constrained Optimization Model for Vegetable Auto Pricing & Replenishment</td>
+            <td>CIS 2023</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">🛠️</span> Technical Skills</h2>
+    <p class="section-subtitle">Tools and technologies I work with daily.</p>
+    <div class="skills-section">
+      <div class="skill-group reveal">
+        <h3>💻 Programming & Frameworks</h3>
+        <div class="skill-item">
+          <div class="skill-name"><span>Python / PyTorch</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>MindSpore</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>OpenCV / Computer Vision</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Java / MATLAB</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Flask / PyQt5</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>🤖 AI / ML Specialization</h3>
+        <div class="skill-item">
+          <div class="skill-name"><span>VLA / Multimodal LLM</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Preference Alignment (DPO)</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Embodied AI / AI2-THOR</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Document AI / OCR</span><span>78%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Federated Learning</span><span>72%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-tags-area reveal">
+      <div class="skill-tags-label">🏷️ Domains & Keywords</div>
+      <div class="skill-tags-cloud">
+        <span class="skt skt-cyan">Qwen-VL</span>
+        <span class="skt skt-purple">AI2-THOR</span>
+        <span class="skt skt-green">DPO</span>
+        <span class="skt skt-orange">MOEA/D</span>
+        <span class="skt skt-cyan">DeepSeek-OCR</span>
+        <span class="skt skt-purple">Federated Learning</span>
+        <span class="skt skt-green">Sim-to-Real</span>
+        <span class="skt skt-orange">Evolutionary Computation</span>
+        <span class="skt skt-cyan">Vision-Language-Action</span>
+        <span class="skt skt-purple">Preference Alignment</span>
+        <span class="skt skt-green">Task Planning</span>
+        <span class="skt skt-orange">Document Understanding</span>
+        <span class="skt skt-cyan">6-DoF Manipulation</span>
+        <span class="skt skt-purple">Domain Randomization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HONORS ===== -->
+<section id="honors" style="background: var(--bg-secondary);">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">🏆</span> Honors & Awards</h2>
+    <p class="section-subtitle">Recognition along the way.</p>
+    <div class="honors-grid">
+      <div class="honor-card reveal">
+        <div class="honor-icon">🥇</div>
+        <div class="honor-info">
+          <div class="honor-title">Huawei "Smart Base" Scholarship</div>
+          <div class="honor-meta">Ministry of Education · Top 0.05% nationwide · 2025</div>
+        </div>
+      </div>
+      <div class="honor-card reveal">
+        <div class="honor-icon">🏅</div>
+        <div class="honor-info">
+          <div class="honor-title">National First Prize — Statistical Modeling</div>
+          <div class="honor-meta">National College Students Competition · 2024</div>
+        </div>
+      </div>
+      <div class="honor-card reveal">
+        <div class="honor-icon">🏅</div>
+        <div class="honor-info">
+          <div class="honor-title">National Second Prize — Math Modeling</div>
+          <div class="honor-meta">National College Students Competition · 2024</div>
+        </div>
+      </div>
+      <div class="honor-card reveal">
+        <div class="honor-icon">📜</div>
+        <div class="honor-info">
+          <div class="honor-title">6 Software Copyrights</div>
+          <div class="honor-meta">Weather Prediction · Image Processing · Air Quality · Clustering (+2 before 2025)</div>
+        </div>
+      </div>
+      <div class="honor-card reveal">
+        <div class="honor-icon">🤝</div>
+        <div class="honor-info">
+          <div class="honor-title">HSD Ambassador</div>
+          <div class="honor-meta">Huawei Student Developer · Campus Developer Alliance · 2024–25</div>
+        </div>
+      </div>
+      <div class="honor-card reveal">
+        <div class="honor-icon">✅</div>
+        <div class="honor-info">
+          <div class="honor-title">Best Paper Nominee</div>
+          <div class="honor-meta">CIS 2023 Conference · 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CURRENTLY WORKING ON ===== -->
+<section id="current">
+  <div class="section-inner">
+    <h2 class="section-title"><span class="emoji">🎯</span> Currently Working On</h2>
+    <p class="section-subtitle">What's on my desk right now.</p>
+    <div class="working-list reveal">
+      <div class="working-item">
+        <div class="wi-emoji">🧠</div>
+        <div class="wi-text">
+          <div class="wi-title">SVLL — ECCV 2026 Submission</div>
+          <div class="wi-desc">Final stage fine-tuning, deadline approaching!</div>
+        </div>
+        <div class="wi-status">Active</div>
+      </div>
+      <div class="working-item">
+        <div class="wi-emoji">🤖</div>
+        <div class="wi-text">
+          <div class="wi-title">AI2-THOR + 6-DoF Manipulation Platform</div>
+          <div class="wi-desc">Building experimental environment for next paper</div>
+        </div>
+        <div class="wi-status">Setup</div>
+      </div>
+      <div class="working-item">
+        <div class="wi-emoji">📖</div>
+        <div class="wi-text">
+          <div class="wi-title">Paper Reading Notes</div>
+          <div class="wi-desc"><a href="https://github.com/AlvieWang/paper-notes" style="color:var(--accent-cyan)">paper-notes</a> repo — updating weekly</div>
+        </div>
+        <div class="wi-status">Ongoing</div>
+      </div>
+      <div class="working-item">
+        <div class="wi-emoji">📝</div>
+        <div class="wi-text">
+          <div class="wi-title">VLA + Federated Learning</div>
+          <div class="wi-desc">Exploring intersection for privacy-preserving robot learning</div>
+        </div>
+        <div class="wi-status">Explore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT CTA ===== -->
+<section class="cta-section" id="contact">
+  <div class="section-inner">
+    <h2 class="cta-title">Let's Connect 🚀</h2>
+    <p class="cta-subtitle">
+      I'm always open to discussing research collaboration, internship opportunities, or just chatting about AI and robotics.
+    </p>
+    <div class="cta-links">
+      <a href="mailto:hrwang1001@outlook.com" class="cta-link cta-email">📧 Email Me</a>
+      <a href="https://github.com/AlvieWang" target="_blank" class="cta-link cta-github">⭐ GitHub</a>
+      <a href="https://scholar.google.com/" target="_blank" class="cta-link cta-scholar">📄 Google Scholar</a>
+    </div>
+    <p style="margin-top:2rem;color:var(--text-muted);font-size:0.9rem;">
+      💡 Open to <strong style="color:var(--accent-cyan)">Summer/Fall 2026</strong> internships in Multimodal LLM / Embodied AI / Data Production & Evaluation<br>
+      Target: Tencent · ByteDance · Alibaba · DeepSeek · Research Labs
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2026 Alvie Wang (王洪榕) · Built with ❤️ and lots of ☕</p>
+  <p style="margin-top:0.5rem;">
+    <a href="https://github.com/AlvieWang">GitHub</a> · 
+    <a href="mailto:hrwang1001@outlook.com">Email</a> · 
+    CUHK(Shenzhen)
+  </p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Typewriter effect
+const phrases = [
+  'Multimodal AI Researcher 🧠',
+  'Embodied Intelligence Enthusiast 🤖',
+  'VLA Model Builder 🔗',
+  'Preference Alignment Explorer ⚖️',
+  'Cat who codes 😺'
+];
+let phraseIdx = 0, charIdx = 0, isDeleting = false, currentPhrase = '';
+const typewriterEl = document.getElementById('typewriter');
+
+function typeWriter() {
+  currentPhrase = phrases[phraseIdx];
+  
+  if (isDeleting) {
+    typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
+    charIdx--;
+  } else {
+    typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
+    charIdx++;
+  }
+
+  let delay = isDeleting ? 40 : 80;
+
+  if (!isDeleting && charIdx === currentPhrase.length) {
+    delay = 2000; // Pause at end
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    phraseIdx = (phraseIdx + 1) % phrases.length;
+    delay = 400;
+  }
+
+  setTimeout(typeWriter, delay);
+}
+typeWriter();
+
+// Scroll reveal
+function reveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (top < windowHeight - 80) {
+      el.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', reveal);
+reveal(); // Initial check
+
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Skill bar animation
+function animateSkillBars() {
+  const bars = document.querySelectorAll('.skill-fill');
+  bars.forEach(bar => {
+    const rect = bar.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      bar.style.width = bar.dataset.width + '%';
+    }
+  });
+}
+window.addEventListener('scroll', animateSkillBars);
+animateSkillBars();
+
+// Stats count-up animation
+function animateStats() {
+  const stats = document.querySelectorAll('.stat-number[data-target]');
+  stats.forEach(stat => {
+    const rect = stat.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50 && !stat.classList.contains('counted')) {
+      stat.classList.add('counted');
+      const target = parseFloat(stat.dataset.target);
+      const isFloat = target % 1 !== 0;
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        stat.textContent = isFloat ? current.toFixed(2) : Math.floor(current);
+      }, 25);
+    }
+  });
+}
+window.addEventListener('scroll', animateStats();
+animateStats();
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
