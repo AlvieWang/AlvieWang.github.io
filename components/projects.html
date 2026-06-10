@@ -1,0 +1,69 @@
+<div class="container-wide">
+    <div class="section-header reveal">
+      <span class="section-emoji">🧪</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-desc">My core research projects with technical details.</p>
+    </div>
+
+    <div class="project-grid">
+      <!-- SVLL -->
+      <div class="proj-card reveal stagger-1">
+        <div class="proj-banner"></div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-icon">🧠</span>
+            <span class="proj-name">SVLL</span>
+            <span class="proj-badge badge-review">⏳ Under Review</span>
+          </div>
+          <div class="proj-venue">Staged VLA Framework for Embodied Task Planning</div>
+          <p class="proj-desc">
+            A novel staged fine-tuning framework that adapts general-purpose VLMs into effective embodied task planners
+            through progressive skill acquisition. Three-stage curriculum learning reduces catastrophic forgetting while
+            Bias-DPO handles long-tail physical constraint violations.
+          </p>
+          <div class="proj-tech">
+            <span class="tech-tag">Qwen2.5-VL-7B</span>
+            <span class="tech-tag">AI2-THOR</span>
+            <span class="tech-tag">Bias-DPO</span>
+            <span class="tech-tag">DPO</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">Python</span>
+          </div>
+          <div class="proj-specs">
+            <div class="spec-row"><span>Base Model</span><span class="spec-val">Qwen2.5-VL-7B</span></div>
+            <div class="spec-row"><span>Stage 1: Vision Grounding</span><span class="spec-val">Object/Spatial Understanding</span></div>
+            <div class="spec-row"><span>Stage 2: Task Planning</span><span class="spec-val">Goal Decomposition</span></div>
+            <div class="spec-row"><span>Stage 3: Action Refinement</span><span class="spec-val">Physical Constraint Reasoning</span></div>
+            <div class="spec-row"><span>Negative Samples</span><span class="spec-val">&lt;1000 bias-aware samples</span></div>
+            <div class="spec-row"><span>Success Rate (SR)</span><span class="spec-val">78.35%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BuildingView -->
+      <div class="proj-card reveal stagger-2">
+        <div class="proj-banner" style="background:#10b981"></div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-icon">🏙️</span>
+            <span class="proj-name">BuildingView</span>
+            <span class="proj-badge badge-pub">✅ SpatialDI'25</span>
+          </div>
+          <div class="proj-venue">Urban Building Exterior Database with MLLM</div>
+          <p class="proj-desc">
+            Automated construction of building exterior databases at city scale by leveraging street view imagery
+            and Multimodal Large Language Models. Enables large-scale urban computing applications including
+            energy estimation and 3D reconstruction.
+          </p>
+          <div class="proj-tech">
+            <span class="tech-tag">MLLM</span>
+            <span class="tech-tag">Street View API</span>
+            <span class="tech-tag">Building Extraction</span>
+            <span class="tech-tag">Python</span>
+          </div>
+          <a href="https://github.com/Jasper0122/BuildingView" target="_blank" class="proj-link">View Code →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
