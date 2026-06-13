@@ -10,7 +10,6 @@ const COMPONENTS = [
   { id: 'c-experience',   file: 'components/experience.html' },
   { id: 'c-projects',     file: 'components/projects.html' },
   { id: 'c-publications', file: 'components/publications.html' },
-  { id: 'c-skills',       file: 'components/skills.html' },
   { id: 'c-honors',       file: 'components/honors.html' },
   { id: 'c-status',       file: 'components/status.html' },
   { id: 'c-contact',      file: 'components/contact.html' },
