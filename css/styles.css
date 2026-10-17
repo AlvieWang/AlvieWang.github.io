@@ -152,8 +152,8 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 
 /* ========== HERO SECTION ========== */
 .hero {
-  min-height: 60vh; display: flex; align-items: center; justify-content: center;
-  padding: 80px 24px 48px;
+  min-height: 52vh; display: flex; align-items: center; justify-content: center;
+  padding: 60px 24px 40px;
   background: var(--bg-hero);
   position: relative;
   border-bottom: 1px solid var(--border-light);
@@ -166,7 +166,7 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   position: relative; z-index: 1;
 }
 .hero-avatar {
-  width: 195px; height: 195px; margin: 0 auto 28px;
+  width: 165px; height: 165px; margin: 0 auto 20px;
   position: relative;
 }
 .avatar-ring {
@@ -186,21 +186,21 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 
 .hero-name {
-  font-size: 2.3rem; font-weight: 700; letter-spacing: -0.03rem;
-  margin-bottom: 6px; animation: fadeInUp 0.6s ease both;
+  font-size: 2.1rem; font-weight: 700; letter-spacing: -0.03rem;
+  margin-bottom: 5px; animation: fadeInUp 0.6s ease both;
   color: var(--text-primary);
 }
 .hero-subtitle {
-  font-size: 1.08rem; color: var(--text-secondary); margin-bottom: 8px;
+  font-size: 1.03rem; color: var(--text-secondary); margin-bottom: 6px;
   font-weight: 400; animation: fadeInUp 0.6s 0.1s both;
 }
 .hero-role {
-  font-size: 1rem; color: var(--accent); font-weight: 500;
-  margin-bottom: 22px; animation: fadeInUp 0.6s 0.15s both;
+  font-size: 0.96rem; color: var(--accent); font-weight: 500;
+  margin-bottom: 16px; animation: fadeInUp 0.6s 0.15s both;
 }
 .hero-bio {
-  font-size: 1rem; color: var(--text-secondary); line-height: 1.75;
-  margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;
+  font-size: 0.96rem; color: var(--text-secondary); line-height: 1.7;
+  margin-bottom: 24px; max-width: 580px; margin-left: auto; margin-right: auto;
   animation: fadeInUp 0.6s 0.2s both;
 }
 .hero-links {
@@ -234,7 +234,7 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 
 /* ========== SECTIONS COMMON ========== */
 .section {
-  padding: 64px 24px;
+  padding: 50px 24px;
 }
 .section-dark {
   background: var(--bg-secondary);
@@ -248,12 +248,12 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   max-width: 960px; margin: 0 auto;
 }
 .section-header {
-  text-align: center; margin-bottom: 40px;
+  text-align: center; margin-bottom: 30px;
 }
-.section-emoji { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+.section-emoji { font-size: 1.5rem; margin-bottom: 6px; display: block; }
 .section-title {
-  font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02rem;
-  margin-bottom: 8px;
+  font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02rem;
+  margin-bottom: 6px;
 }
 .section-desc {
   font-size: 0.96rem; color: var(--text-secondary); max-width: 540px;
@@ -262,14 +262,14 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 
 /* ========== BIO / ABOUT ========== */
 .bio-grid {
-  display: grid; grid-template-columns: 240px 1fr; gap: 36px;
+  display: grid; grid-template-columns: 225px 1fr; gap: 30px;
   align-items: start;
 }
 .bio-sidebar {
-  position: sticky; top: 88px;
+  position: sticky; top: 80px;
 }
 .bio-avatar-small {
-  width: 210px; height: 210px; margin: 0 auto 16px;
+  width: 195px; height: 195px; margin: 0 auto 14px;
 }
 .bio-avatar-small .avatar-ring { animation: none; }
 .bio-avatar-small .avatar-inner { font-size: 2.8rem; }
@@ -277,7 +277,7 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   list-style: none; font-size: 0.92rem;
 }
 .info-list li {
-  padding: 8px 0;
+  padding: 6px 0;
   border-bottom: 1px solid var(--border-light);
   color: var(--text-secondary);
   display: flex; align-items: flex-start; gap: 8px;
@@ -288,8 +288,8 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 
 .bio-main {}
 .bio-text {
-  font-size: 1.02rem; color: var(--text-secondary); line-height: 1.8;
-  margin-bottom: 28px;
+  font-size: 1rem; color: var(--text-secondary); line-height: 1.75;
+  margin-bottom: 22px;
 }
 .bio-text strong { color: var(--text-primary); }
 .highlight-word {
@@ -299,10 +299,10 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 
 /* ========== INTERESTS TAG CLOUD ========== */
-.tags-section { margin-top: 36px; }
-.tags-label { font-size: 0.92rem; font-weight: 600; margin-bottom: 14px; color: var(--text-primary); }
+.tags-section { margin-top: 28px; }
+.tags-label { font-size: 0.9rem; font-weight: 600; margin-bottom: 11px; color: var(--text-primary); }
 .tag-cloud {
-  display: flex; flex-wrap: wrap; gap: 8px;
+  display: flex; flex-wrap: wrap; gap: 7px;
 }
 .tag-pill {
   display: inline-flex; align-items: center; gap: 4px;
@@ -319,10 +319,10 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 
 /* ========== EDUCATION ========== */
-.edu-list { display: flex; flex-direction: column; gap: 16px; }
+.edu-list { display: flex; flex-direction: column; gap: 11px; }
 .edu-item {
-  display: grid; grid-template-columns: 1fr auto; gap: 4px 20px;
-  padding: 20px; border-radius: 4px;
+  display: grid; grid-template-columns: 1fr auto; gap: 3px 20px;
+  padding: 15px 16px; border-radius: 4px;
   background: var(--bg-card); border: 1px solid var(--border);
   transition: all 0.2s;
 }
@@ -330,22 +330,22 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   border-color: var(--accent);
   box-shadow: var(--shadow-sm);
 }
-.edu-degree { font-size: 1.08rem; font-weight: 700; }
-.edu-school { color: var(--accent); font-weight: 600; font-size: 0.96rem; }
-.edu-meta { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
+.edu-degree { font-size: 1.02rem; font-weight: 700; }
+.edu-school { color: var(--accent); font-weight: 600; font-size: 0.92rem; }
+.edu-meta { color: var(--text-secondary); font-size: 0.87rem; margin-top: 3px; }
 .edu-date {
-  font-size: 0.88rem; color: var(--text-muted);
+  font-size: 0.84rem; color: var(--text-muted);
   white-space: nowrap; align-self: start;
-  padding-top: 4px;
+  padding-top: 3px;
 }
 .edu-details {
   grid-column: 1 / -1;
-  margin-top: 12px; padding-top: 14px;
+  margin-top: 9px; padding-top: 10px;
   border-top: 1px dashed var(--border);
-  font-size: 0.91rem; color: var(--text-secondary);
-  line-height: 1.7;
+  font-size: 0.88rem; color: var(--text-secondary);
+  line-height: 1.65;
 }
-.course-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.course-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .course-chip {
   padding: 3px 10px; border-radius: 4px;
   font-size: 0.81rem; background: var(--bg-tertiary);
@@ -360,8 +360,8 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   width: 2px; background: var(--border); border-radius: 1px;
 }
 .tl-item {
-  position: relative; margin-bottom: 20px;
-  padding: 18px 20px; border-radius: 4px;
+  position: relative; margin-bottom: 14px;
+  padding: 14px 16px; border-radius: 4px;
   background: var(--bg-card); border: 1px solid var(--border);
   transition: all 0.2s;
 }
@@ -370,38 +370,38 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   border-color: var(--accent); box-shadow: var(--shadow-sm);
 }
 .tl-dot {
-  position: absolute; left: -24px; top: 26px;
+  position: absolute; left: -24px; top: 22px;
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--accent); border: 3px solid var(--bg);
   box-shadow: 0 0 0 3px var(--accent-light);
 }
 .tl-header {
   display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 12px; flex-wrap: wrap; margin-bottom: 10px;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 8px;
 }
-.tl-title { font-size: 1.04rem; font-weight: 700; }
-.tl-org { color: var(--accent); font-weight: 600; font-size: 0.93rem; margin-top: 2px; }
+.tl-title { font-size: 1rem; font-weight: 700; }
+.tl-org { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-top: 2px; }
 .tl-time {
-  font-size: 0.84rem; color: var(--text-muted);
+  font-size: 0.82rem; color: var(--text-muted);
   white-space: nowrap; flex-shrink: 0;
 }
 .tl-body {
-  font-size: 0.93rem; color: var(--text-secondary); line-height: 1.7;
+  font-size: 0.91rem; color: var(--text-secondary); line-height: 1.65;
 }
 .tl-body ul {
-  list-style: none; margin-top: 8px;
+  list-style: none; margin-top: 6px;
 }
 .tl-body ul li {
-  position: relative; padding-left: 18px; margin-bottom: 4px;
+  position: relative; padding-left: 18px; margin-bottom: 3px;
 }
 .tl-body ul li::before {
-  content: ''; position: absolute; left: 0; top: 10px;
+  content: ''; position: absolute; left: 0; top: 9px;
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent); opacity: 0.6;
 }
 
 /* ========== PROJECT CARDS ========== */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 13px; }
 .proj-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: 4px; overflow: hidden;
@@ -416,7 +416,7 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   height: 3px;
   background: var(--accent);
 }
-.proj-body { padding: 20px; }
+.proj-body { padding: 16px; }
 .proj-header {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px; margin-bottom: 6px;
@@ -440,19 +440,19 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 :root[data-theme="dark"] .badge-intern { background: rgba(139,92,246,0.15); color: #a78bfa; }
 
-.proj-venue { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px; }
+.proj-venue { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; }
 .proj-desc {
-  font-size: 0.94rem; color: var(--text-secondary); line-height: 1.7;
-  margin-bottom: 16px;
+  font-size: 0.94rem; color: var(--text-secondary); line-height: 1.65;
+  margin-bottom: 12px;
 }
 .proj-specs {
   background: var(--bg-secondary); border-radius: 4px;
-  padding: 12px 14px; margin-top: 12px;
-  font-size: 0.82rem;
+  padding: 10px 12px; margin-top: 10px;
+  font-size: 0.81rem;
 }
 .spec-row {
   display: flex; justify-content: space-between;
-  padding: 3px 0;
+  padding: 2px 0;
   color: var(--text-muted);
 }
 .spec-row:last-child { font-weight: 600; color: var(--accent); }
@@ -466,17 +466,24 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   border: 1px solid var(--border-light);
   font-weight: 500;
 }
+.proj-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+.proj-links > .proj-link { margin-top: 0; }
 .proj-link {
-  display: inline-flex; align-items: center; gap: 4px;
-  color: var(--accent); font-size: 0.89rem; font-weight: 600;
-  margin-top: 14px; transition: gap 0.2s;
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--accent); font-size: 0.82rem; font-weight: 600;
+  text-decoration: none;
+  padding: 5px 12px; border-radius: 4px;
+  border: 1px solid var(--border);
+  margin-top: 11px; transition: all 0.2s;
 }
-.proj-link:hover { gap: 8px; }
+.proj-link:hover {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
 
 /* ========== PUBLICATIONS ========== */
-.pub-list { display: flex; flex-direction: column; gap: 14px; }
+.pub-list { display: flex; flex-direction: column; gap: 10px; }
 .pub-item {
-  display: flex; gap: 16px; padding: 18px; border-radius: 4px;
+  display: flex; gap: 14px; padding: 14px 16px; border-radius: 4px;
   background: var(--bg-card); border: 1px solid var(--border);
   transition: all 0.2s;
   align-items: flex-start;
@@ -493,22 +500,48 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 .pub-body { flex: 1; }
 .pub-title-text {
-  font-size: 1rem; font-weight: 700; margin-bottom: 4px;
+  font-size: 0.97rem; font-weight: 700; margin-bottom: 3px;
   line-height: 1.45;
 }
 .pub-venue {
-  font-size: 0.88rem; color: var(--accent); font-weight: 500;
-  margin-bottom: 6px;
+  font-size: 0.85rem; color: var(--accent); font-weight: 500;
+  margin-bottom: 4px;
 }
-.pub-authors { font-size: 0.86rem; color: var(--text-muted); margin-bottom: 8px; }
-.pub-actions { display: flex; gap: 12px; }
+.pub-authors { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 7px; }
+.pub-actions { display: flex; gap: 8px; }
 .pub-action-link {
-  font-size: 0.84rem; font-weight: 600; color: var(--accent);
-  padding: 4px 12px; border-radius: 6px;
+  font-size: 0.81rem; font-weight: 600; color: var(--accent);
+  padding: 3px 11px; border-radius: 4px;
   border: 1px solid var(--accent);
   transition: all 0.2s;
 }
 .pub-action-link:hover { background: var(--accent); color: white; }
+
+/* ========== CONFERENCES ========== */
+.conf-list { display: flex; flex-direction: column; gap: 9px; }
+.conf-item {
+  display: flex; gap: 14px; padding: 13px 15px; border-radius: 4px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  transition: all 0.2s; align-items: flex-start;
+}
+.conf-item:hover {
+  border-color: var(--accent); box-shadow: var(--shadow-sm);
+}
+.conf-date-col { flex-shrink: 0; width: 104px; }
+.conf-date {
+  display: inline-block; text-align: center; line-height: 1.45;
+  font-size: 0.79rem; font-weight: 600; color: var(--accent);
+  padding: 4px 10px; border-radius: 4px; background: var(--accent-light);
+}
+.conf-body { flex: 1; }
+.conf-name {
+  font-size: 0.97rem; font-weight: 700; line-height: 1.45; margin-bottom: 2px;
+}
+.conf-name-zh {
+  font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+  line-height: 1.5; margin-bottom: 4px;
+}
+.conf-loc { font-size: 0.82rem; color: var(--text-muted); }
 
 /* ========== SKILLS ========== */
 .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -532,10 +565,10 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 
 /* ========== HONORS ========== */
-.honors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.honors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 9px; }
 .honor-card {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 16px; border-radius: 4px;
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 12px 14px; border-radius: 4px;
   background: var(--bg-card); border: 1px solid var(--border);
   transition: all 0.2s;
 }
@@ -548,10 +581,10 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 .honor-meta { font-size: 0.82rem; color: var(--text-muted); margin-top: 3px; }
 
 /* ========== CURRENT STATUS ========== */
-.status-list { display: flex; flex-direction: column; gap: 10px; }
+.status-list { display: flex; flex-direction: column; gap: 8px; }
 .status-item {
   display: flex; align-items: center; gap: 12px;
-  padding: 14px 18px; border-radius: 4px;
+  padding: 11px 15px; border-radius: 4px;
   background: var(--bg-card); border: 1px solid var(--border);
   transition: all 0.2s;
 }
@@ -568,12 +601,12 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 
 /* ========== CONTACT ========== */
 .contact-section { text-align: center; }
-.contact-title { font-size: 1.65rem; font-weight: 700; margin-bottom: 10px; }
+.contact-title { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; }
 .contact-desc {
-  font-size: 0.96rem; color: var(--text-secondary); max-width: 500px;
-  margin: 0 auto 24px; line-height: 1.7;
+  font-size: 0.94rem; color: var(--text-secondary); max-width: 500px;
+  margin: 0 auto 20px; line-height: 1.65;
 }
-.contact-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.contact-links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 .contact-btn {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 10px 22px; border-radius: 4px;
@@ -592,15 +625,15 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
 }
 .contact-alt:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 .intern-note {
-  margin-top: 24px; padding: 16px 20px; border-radius: 4px;
+  margin-top: 18px; padding: 13px 16px; border-radius: 4px;
   background: var(--bg-secondary); border: 1px solid var(--border);
-  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+  font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;
 }
 .intern-note strong { color: var(--accent); }
 
 /* ========== FOOTER ========== */
 .footer {
-  text-align: center; padding: 40px 24px;
+  text-align: center; padding: 30px 24px;
   border-top: 1px solid var(--border-light);
   font-size: 0.85rem; color: var(--text-muted);
 }
@@ -613,14 +646,14 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   .nav-links { display: none; }
   .mobile-menu-btn { display: block; }
 
-  .hero-name { font-size: 1.75rem; }
-  .hero-avatar { width: 150px; height: 150px; }
-  .hero-avatar .avatar-inner { font-size: 2.6rem; }
+  .hero-name { font-size: 1.7rem; }
+  .hero-avatar { width: 130px; height: 130px; margin-bottom: 16px; }
+  .hero-avatar .avatar-inner { font-size: 2.3rem; }
 
-  .bio-grid { grid-template-columns: 1fr; gap: 24px; }
+  .bio-grid { grid-template-columns: 1fr; gap: 20px; }
   .bio-sidebar { position: static; }
-  .bio-avatar-small { width: 150px; height: 150px; margin-bottom: 12px; }
-  .bio-avatar-small .avatar-inner { font-size: 2.2rem; }
+  .bio-avatar-small { width: 130px; height: 130px; margin-bottom: 10px; }
+  .bio-avatar-small .avatar-inner { font-size: 2rem; }
 
   .edu-item { grid-template-columns: 1fr; }
   .edu-date { align-self: auto; }
@@ -628,10 +661,13 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   .skills-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
 
-  .pub-item { flex-direction: column; gap: 12px; }
+  .pub-item { flex-direction: column; gap: 10px; }
   .pub-status-col { width: auto; }
 
-  .section { padding: 48px 20px; }
-  .section-title { font-size: 1.4rem; }
+  .conf-item { flex-direction: column; gap: 8px; }
+  .conf-date-col { width: auto; }
+
+  .section { padding: 38px 20px; }
+  .section-title { font-size: 1.35rem; }
   .container-wide { max-width: 100%; }
 }
