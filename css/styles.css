@@ -507,7 +507,13 @@ code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.88em;
   font-size: 0.85rem; color: var(--accent); font-weight: 500;
   margin-bottom: 4px;
 }
-.pub-authors { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 7px; }
+.pub-authors { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 5px; }
+.pub-authors sup { color: var(--accent); font-weight: 700; padding-left: 1px; }
+.pub-footnote {
+  font-size: 0.79rem; color: var(--text-muted); font-style: italic;
+  margin-bottom: 8px;
+}
+.pub-footnote sup { color: var(--accent); padding-right: 1px; }
 .pub-actions { display: flex; gap: 8px; }
 .pub-action-link {
   font-size: 0.81rem; font-weight: 600; color: var(--accent);
